@@ -73,7 +73,7 @@ class Update
         $signature = self::base64encode($signature);
         $status = true;
 
-        foreach ($this->getCaches() as $cache) {
+        foreach ($this->getCache() as $cache) {
             $ampCacheBase = "https://{$host}.{$cache->updateCacheApiDomainSuffix}";
             $response = $this->guzzleClient->get("{$ampCacheBase}{$ampCachePath}&amp_url_signature={$signature}");
             $status = $status && ('OK' === (string)$response->getBody());
